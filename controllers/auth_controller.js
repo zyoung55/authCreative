@@ -10,21 +10,47 @@ exports.signup = function(req, res) {
     console.log("signup username!");
     console.log(req.body.username);
     console.log(req.body.password);
-    
-    User.findOne({username: req.body.username}, function (err, user) {
-        if (user) { 
-            req.session.message = "There was an error. Someone is already using that username.";
-            console.log("Check failed");
-            res.redirect('/signup');
-            return;
-        }
-        else {
-            console.log("Check passed");
-            var user = new User({username:req.body.username})
-            var hashedPassword = hashPassword(req.body.password);
-            user.set('hashedPassword', hashedPassword);
-            user.save(function(err, user) {
-            if (user) {
+    if (req.body.password != req.body.confirmPassword) {
+        req.session.message = "There was an error. Your password and confirm password did not match.";
+        res.redirect('/signup');
+    }
+    else {
+        User.findOne({username: req.body.username}, function (err, user) {
+            if (user) { 
+                req.session.message = "There was an error. Someone is already using that username.";
+                console.log("Check failed");
+                res.redirect('/signup');
+                return;
+            }
+            else {
+                console.log("Check passed");
+                var user = new User({username:req.body.username})
+                var hashedPassword = hashPassword(req.body.password);
+                user.set('hashedPassword', hashedPassword);
+                user.save(function(err, user) {
+                if (user) {
+                    console.log("user id: " + user.id);
+                    console.log("user username: " + user.username);
+                    console.log("user hashedPassword: " + user.hashedPassword);
+                    req.session.user = user.id;
+                    req.session.username = user.username; 
+                    req.session.message = "User added!";
+                    res.redirect('/');
+                }
+                else {
+                    req.session.message = "Sign up failed."
+                    res.redirect('/signup');
+                }
+                });
+            }
+        }); 
+    }
+};
+
+exports.login = function(req, res) {
+    User.findOne({username: req.body.username}).exec(function(err, user) {
+        if (user) {
+            if(hashPassword(req.body.password) == user.hashedPassword) {
                 console.log("user id: " + user.id);
                 console.log("user username: " + user.username);
                 console.log("user hashedPassword: " + user.hashedPassword);
@@ -34,24 +60,10 @@ exports.signup = function(req, res) {
                 res.redirect('/');
             }
             else {
-                req.session.message = "Sign up failed."
-                res.redirect('/signup');
-            }
-            });
-        }
-    }); 
-};
-
-exports.login = function(req, res) {
-    User.findOne({username: req.body.username}).exec(function(err, user) {
-        if (user) {
-                console.log("user id: " + user.id);
-                console.log("user username: " + user.username);
-                console.log("user hashedPassword: " + user.hashedPassword);
-                req.session.user = user.id;
-                req.session.username = user.username; 
-                req.session.message = "User added!";
+                req.session.user = null;
+                req.session.message = "Wrong username/password combination.";
                 res.redirect('/');
+            }
         }
         else {
             req.session.message = "Login failed.";
@@ -105,9 +117,27 @@ exports.deleteBook = function(req, res) {
                            res.send("success");
                            console.log("The book pull worked!")
                        }
-                   })
+                   });
                }
            }
        } 
+    });
+};
+
+exports.deleteAccount = function(req, res) {
+    console.log("in delete account!!!");
+    User.findOne({username: req.session.username}).exec(function(err, user) {
+       if (user) { 
+           console.log("There is a user!!!");
+           user.remove();
+           req.session.destroy(function() {
+               console.log("Made it into destroy session!");
+           });
+           res.end();
+           //res.redirect('http://18.216.163.75:8083/login');
+       }
+       else {
+           console.log("There was an error deleting the account.");
+       }
     })
-}
+};

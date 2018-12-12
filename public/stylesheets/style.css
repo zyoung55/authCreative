@@ -7,6 +7,19 @@ a {
   color: white;
 }
 
+#addBookButton {
+  background-color: #60BDFF;
+  color: white;
+}
+#deleteAccountButtonParent {
+  text-align: center;
+  margin: 4%;
+}
+
+#deleteAccountButton {
+  color: red;
+}
+
 h1 {
   text-align: center;
   background-color: #FFBB46;
@@ -39,6 +52,7 @@ li {
 
 #bookAdditionParent {
   text-align: center;
+  border: solid 1px black;
 }
 
 #bookList {
@@ -120,7 +134,7 @@ li {
   /*margin: auto;*/
   text-align: center;
   margin: 5%;
-  
+  width: 100%;
 }
 
 .bookImage {

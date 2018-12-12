@@ -14,22 +14,22 @@
             </form>
         </div>
     </h1>
-    <p class="welcomeParagraph">Welcome to your own personal book collection. We hope you enjoy keeping track of books
-    you have read</br> as well as adding new books you would like to read in the future!</p>
+    <p class="welcomeParagraph">Welcome back <%= username %>! We hope you are enjoying keeping track of books
+    you have read as well as adding</br> new books you would like to read in the future!</p>
     <h2 id="bookList">Book list:</h2>
-    <p>The books below are ordered by desire to read so you can focus on reading
+    <p>The books below are ordered by your desire to read them so you can focus on reading
 the books you currently want to read the most.</p>
     <div id="gridContainer" ng-repeat="book in books | orderBy: '-readDesire'">
         <div class="bookDiv">
             <img class="bookImage" src="{{book.bookUrl}}" alt="A picture of the book"/></br></br>
-            Book name: {{book.book}}</br></br>
+            <strong>{{book.book}}</strong></br></br>
             Number of times read: {{book.numRead}}</br></br>
             Current level of desire to read: {{book.readDesire}}</br></br>
             <button ng-click="deleteBook(book)">Delete Book</button>
         </div>
     </div>
-    <h2>Add a new book:</h2>
     <div id="bookAdditionParent">
+        <h2>Add a new book:</h2>
         <form id="bookAddition" ng-submit="addBook()"> 
             <input type="textarea" placeholder="Book name" ng-model="book"></br>
             <input type="textarea" placeholder="Url to book picture" ng-model="bookUrl"></br>
@@ -43,8 +43,11 @@ the books you currently want to read the most.</p>
                     <option value="5">5</option>
                 </select>
             </span></br>
-            <input type="submit" value="submit">
+            <input id="addBookButton" type="submit" value="submit">
         </form>
+    </div>
+    <div id="deleteAccountButtonParent">
+        <button ng-click="deleteAccount()" id="deleteAccountButton">Delete Account</button>
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>

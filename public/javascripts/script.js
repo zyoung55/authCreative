@@ -55,7 +55,20 @@ var app = angular.module('myApp', [])
                     }
                 }
                 console.log("made it to the response.");
+            });
+        };
+        
+        $scope.deleteAccount = function() {
+            alert("Clicking this button will delete your account and all the books you have collected. Click ok to continue.");
+            $http({
+                method: "DELETE", 
+                url: "/deleteAccount",
             })
-        }
+            .then(function(response) {
+                console.log("After delete account");
+                window.location.href = 'http://18.216.163.75:8083/login';
+            });
+        };
+        
     }
 ]);

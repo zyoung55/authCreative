@@ -7,12 +7,11 @@ var users = require('../controllers/auth_controller');
 router.get('/', function(req, res, next) {
   console.log("In '/' get.");
   if (!req.session.username) {
-    if (!req.session.message) req.session.message = "Not currently logged on.";
-    res.render('login.html', {message: req.session.message});
+    res.redirect("/login");
   }
   else if (req.session.username) {
     console.log("message:" + req.session.message);
-    res.render('userpage.html', {message: req.session.message});
+    res.render('userpage.html', {message: req.session.message, username: req.session.username});
     console.log("Your logged in bro");
   }
 });
@@ -32,10 +31,16 @@ router.get('/logout', function(req, res, next) {
   });
 });
 
+router.get('/login', function(req, res, nexxt) {
+  if (!req.session.message) req.session.message = "Not currently logged on.";
+    res.render('login.html', {message: req.session.message});
+});
+
 router.post('/login', users.login);
 router.post('/addBook', users.addBook);
 router.post('/signup', users.signup);
 router.get('/getBooks', users.getBooks);
 router.put('/deleteBook', users.deleteBook);
+router.delete('/deleteAccount', users.deleteAccount);
 
 module.exports = router;
