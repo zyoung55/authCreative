@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up page</title>
+    <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <h1>Read and Remember</h1>
+    <p>Welcome to your own personal book collection. We hope you enjoy keeping track of books
+    you have read</br> as well as adding new books you would like to read in the future!</p>
+    <div id="signUpParent">
+        <div id="signUpDiv">
+            <h2>Sign Up:</h2>
+            <form method="POST" action="/signup">
+                <input type="text" placeholder="username" class="signUpInput" name="username"></br>
+                <input type="password" placeholder="password" class="signUpInput" name="password"></br>
+                <input type="password" placeholder="confirm password" class="signUpInput" name="confirmPassword"></br>
+                <input type="submit" value="submit" class="submit">
+            </form>
+            <span class="switchBack">Already signed up? Log back in <a href="http://18.216.163.75:8083">here!</a></span>
+        </div>
+    </div>
+    <div id="signInMessage">
+        <span>Login Status: <%= message %></span>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="javascripts/script.js"></script>
+</html>

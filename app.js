@@ -3,14 +3,38 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
+var expressSession = require('express-session');
+var mongoStore = require('connect-mongo')({session: expressSession});
+var mongoose = require('mongoose');
+
+/*Include mongoose and connect to the database. */
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/books', {useNewUrlParser: true});
+var db = mongoose.connection;
+require('./models/User');
+db.on('error', console.error.bind(console, "connection error"));
+db.once('open', function() {
+  console.log('connected');
+});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+app.use(expressSession({
+  secret: "The Secret is...",
+  cookie: {maxAge:2628000000},
+  resave: true,
+  saveUninitialized: true,
+  store: new mongoStore({
+    mongooseConnection:mongoose.connection
+  })
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+app.engine('.html', require('ejs').__express);
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));

@@ -4,5 +4,129 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  background-color: #FFBB46;
+  color: white;
+  padding: 30px;
+  border: solid 5px black;
+}
+
+h2 {
+  text-align: center;
+}
+
+input {
+  margin: 2%;
+  width: 40%;
+}
+
+p {
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+}
+
+#bookAddition input {
+  width: 15%;
+  margin: 1%;
+}
+
+#bookAdditionParent {
+  text-align: center;
+}
+
+#bookList {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 15%;
+  background-color: #60BDFF;
+  color: white;
+  border: solid 1px black;
+}
+
+#loginDiv {
+  display: inline-block;
+  background-color: #60BDFF;
+  width: 30%;
+  padding-right: 3%;
+  padding-left: 3%;
+  padding-bottom: 10%;
+  padding-top: 2%;
+  border: solid 1px black;
+}
+
+#loginMessage {
+  text-align: center;
+}
+
+#signInMessage {
+  text-align: center;
+}
+
+#loginParent {
+  margin-top: 5%;
+  text-align: center;
+}
+
+#logoutButtonParent {
+  text-align: right;
+  margin: 0%;
+  padding: 0%;
+}
+
+#logoutButton {
+  width: 15%;
+  display: inline-block;
+}
+
+#signUpDiv {
+  display: inline-block;
+  background-color: #60BDFF;
+  width: 30%;
+  padding-right: 3%;
+  padding-left: 3%;
+  padding-bottom: 10%;
+  padding-top: 2%;
+  border: solid 1px black;
+}
+
+#signUpParent {
+   margin-top: 5%;
+   text-align: center;
+}
+
+.switchBack {
+  margin-top: .5%;
+}
+
+.submit {
+  width: 15%;
+}
+
+#gridContainer {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+}
+
+.bookDiv {
+  /*margin: auto;*/
+  text-align: center;
+  margin: 5%;
+  
+}
+
+.bookImage {
+  width: 100px;
+  height: 130px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
