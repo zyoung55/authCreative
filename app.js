@@ -8,7 +8,7 @@ var expressSession = require('express-session');
 var mongoStore = require('connect-mongo')({session: expressSession});
 var mongoose = require('mongoose');
 
-/*Include mongoose and connect to the database. */
+/*Include mongoose and connects to the database. */
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/books', {useNewUrlParser: true});
 var db = mongoose.connection;
@@ -21,6 +21,7 @@ db.once('open', function() {
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+/* Set up for sessions. */
 var app = express();
 app.use(expressSession({
   secret: "The Secret is...",

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+    
 <head>
     <title>User page</title>
     <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl">
+    
     <h1>
         Rad Reads</br>
         <em class="tagline">Remember, Read, Relate</em>
@@ -15,15 +17,22 @@
             </form>
         </div>
     </h1>
+    
     <p class="welcomeParagraph">Welcome back <%= username %>! We hope you are enjoying keeping track of books
     you have read as well as adding</br> new books you would like to read in the future!</p>
+    
     <h2 id="bookList">Book list:</h2>
-    <button ng-click="alphOrder()")>Alphabetical</button>
-    <button ng-click="numTimesRead()">Number of Times Read</button>
-    <button ng-click="desireToRead()">Current Desire to Read</button>
-    <p>The books below are ordered by your desire to read them so you can focus on reading
-the books you currently want to read the most.</p>
-    <div id="gridContainer" ng-repeat="book in books | orderBy: '-readDesire'">
+    <p>The books can be ordered with the below three filters: alphabetical order, ordered by the books</br>
+you have read the most, or by the books you have the greatest desire to read.</p>
+
+    <p id="filterByParagraph">Filter by:</p>
+    <div id="filterDiv">
+        <button class="filterButton" ng-click="alphOrder('book')")>Alphabetical</button>
+        <button class="filterButton" ng-click="numTimesRead('-numRead')">Number of Times Read</button>
+        <button class="filterButton" ng-click="desireToRead('-readDesire')">Current Desire to Read</button>
+    </div>
+    
+    <div id="gridContainer" ng-repeat="book in books | orderBy:orderValue">
         <div class="bookDiv">
             <img class="bookImage" src="{{book.bookUrl}}" alt="A picture of the book"/></br></br>
             <strong>{{book.book}}</strong></br></br>
@@ -32,13 +41,14 @@ the books you currently want to read the most.</p>
             <button ng-click="deleteBook(book)">Delete Book</button>
         </div>
     </div>
+    
     <div id="bookAdditionParent">
         <h2>Add a new book:</h2>
         <form id="bookAddition" ng-submit="addBook()"> 
             <input type="textarea" placeholder="Book name" ng-model="book"></br>
             <input type="textarea" placeholder="Url to book picture" ng-model="bookUrl"></br>
             <input type="number" placeholder="Number of times read" ng-model="numRead"></br>
-            <span>Read desire: &nbsp 
+            <span>Read desire &nbsp 
                 <select ng-model="readDesire">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -50,10 +60,14 @@ the books you currently want to read the most.</p>
             <input id="addBookButton" type="submit" value="submit">
         </form>
     </div>
+    
     <div id="deleteAccountButtonParent">
         <button ng-click="deleteAccount()" id="deleteAccountButton">Delete Account</button>
     </div>
+    
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="javascripts/script.js"></script>
+
 </html>

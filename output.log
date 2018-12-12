@@ -1,0 +1,17 @@
+nohup: ignoring input
+Port: 8083
+connected
+[0mGET /login [36m304 [0m11.337 ms - -[0m
+[0mGET /javascripts/script.js [36m304 [0m3.546 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m11.369 ms - -[0m
+There was an erro accessing the user.
+[0mGET /login [36m304 [0m1.395 ms - -[0m
+[0mGET /getBooks [0m- [0m- ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m1.098 ms - -[0m
+[0mGET /javascripts/script.js [36m304 [0m1.493 ms - -[0m
+There was an erro accessing the user.
+[0mGET /login [36m304 [0m1.593 ms - -[0m
+[0mGET /getBooks [0m- [0m- ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m4.963 ms - -[0m
+[0mGET /javascripts/script.js [36m304 [0m1.569 ms - -[0m
+There was an erro accessing the user.

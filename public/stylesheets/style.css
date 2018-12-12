@@ -1,23 +1,11 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
+/* styles.css */
 a {
   color: white;
 }
 
-#addBookButton {
-  background-color: #60BDFF;
-  color: white;
-}
-#deleteAccountButtonParent {
-  text-align: center;
-  margin: 4%;
-}
-
-#deleteAccountButton {
-  color: red;
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -37,12 +25,17 @@ input {
   width: 40%;
 }
 
+li {
+  list-style-type: none;
+}
+
 p {
   text-align: center;
 }
 
-li {
-  list-style-type: none;
+#addBookButton {
+  background-color: #60BDFF;
+  color: white;
 }
 
 #bookAddition input {
@@ -58,10 +51,36 @@ li {
 #bookList {
   text-align: center;
   font-size: 30px;
-  margin-top: 15%;
+  margin-top: 12%;
   background-color: #60BDFF;
   color: white;
   border: solid 1px black;
+}
+
+#deleteAccountButton {
+  color: red;
+}
+
+#deleteAccountButtonParent {
+  text-align: center;
+  margin: 4%;
+}
+
+#filterByParagraph {
+  text-align: center;
+}
+
+#filterDiv {
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+#gridContainer {
+  width: 50%;
+  display: inline-grid;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 2px;
+  grid-row-gap: 200px;
 }
 
 #loginDiv {
@@ -79,8 +98,14 @@ li {
   text-align: center;
 }
 
-#signInMessage {
-  text-align: center;
+#logoutButtonParent {
+  text-align: right;
+  margin: 0%;
+  padding: 0%;
+}
+
+#loginNote {
+  margin-top: 2.5%;
 }
 
 #loginParent {
@@ -88,15 +113,13 @@ li {
   text-align: center;
 }
 
-#logoutButtonParent {
-  text-align: right;
-  margin: 0%;
-  padding: 0%;
-}
-
 #logoutButton {
   width: 15%;
   display: inline-block;
+}
+
+#signInMessage {
+  text-align: center;
 }
 
 #signUpDiv {
@@ -115,31 +138,11 @@ li {
    text-align: center;
 }
 
-.switchBack {
-  margin-top: .5%;
-}
-
-.submit {
-  width: 15%;
-}
-
-#gridContainer {
-  width: 50%;
-  display: inline-grid;
-  grid-template-columns: 50% 50%;
-  grid-column-gap: 2px;
-  grid-row-gap: 200px;
-}
-
 .bookDiv {
   /*margin: auto;*/
   text-align: center;
   margin: 5%;
   width: 100%;
-}
-
-.tagline {
-  font-size: 15px;
 }
 
 .bookImage {
@@ -148,6 +151,22 @@ li {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.filterButton {
+  width: 15%;
+}
+
+.submit {
+  width: 15%;
+}
+
+.switchBack {
+  margin-top: .5%;
+}
+
+.tagline {
+  font-size: 15px;
 }
 
 .welcomeParagraph {

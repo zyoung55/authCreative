@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
+    
 <head>
     <title>Login page</title>
     <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl">
-     <h1>Rad Reads</br><em class="tagline">Remember, Read, Relate</em></h1>
+    
+    <h1>Rad Reads</br><em class="tagline">Remember, Read, Relate</em></h1>
+    
     <p class="welcomeParagraph">Welcome to your own personal book collection. We hope you enjoy keeping track of books
     you have read</br> as well as adding new books you would like to read in the future!</p>
+    
     <div id="loginParent">
         <div id="loginDiv">
             <h2>Login:</h2>
@@ -20,10 +24,17 @@
             <span class="switchBack">Not signed up yet? Click <a href="signup">here!</a></span>
         </div>
     </div>
+    
     <div id="loginMessage">
         <span>Login Status: <%= message %></span>
     </div>
+    
+    <p id="loginNote"><strong>Note: this website uses cookies as well as sessions for maintaining state. To login to a sample 
+website,</br> enter "Jeff" for the username and "123" for the password fields above.</strong></p>
+
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="javascripts/script.js"></script>
+
 </html>
