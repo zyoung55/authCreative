@@ -7,7 +7,8 @@
 
 <body ng-app="myApp" ng-controller="myCtrl">
     <h1>
-        Read and Remember
+        Rad Reads</br>
+        <em class="tagline">Remember, Read, Relate</em>
         <div id="logoutButtonParent">
             <form id="logoutForm" method="GET" action="/logout">
                 <button id="logoutButton">Logout</button>
@@ -17,6 +18,9 @@
     <p class="welcomeParagraph">Welcome back <%= username %>! We hope you are enjoying keeping track of books
     you have read as well as adding</br> new books you would like to read in the future!</p>
     <h2 id="bookList">Book list:</h2>
+    <button ng-click="alphOrder()")>Alphabetical</button>
+    <button ng-click="numTimesRead()">Number of Times Read</button>
+    <button ng-click="desireToRead()">Current Desire to Read</button>
     <p>The books below are ordered by your desire to read them so you can focus on reading
 the books you currently want to read the most.</p>
     <div id="gridContainer" ng-repeat="book in books | orderBy: '-readDesire'">

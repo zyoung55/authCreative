@@ -124,10 +124,11 @@ li {
 }
 
 #gridContainer {
+  width: 50%;
   display: inline-grid;
-  grid-template-columns: auto auto auto;
-  grid-column-gap: 50px;
-  grid-row-gap: 50px;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 2px;
+  grid-row-gap: 200px;
 }
 
 .bookDiv {
@@ -135,6 +136,10 @@ li {
   text-align: center;
   margin: 5%;
   width: 100%;
+}
+
+.tagline {
+  font-size: 15px;
 }
 
 .bookImage {
