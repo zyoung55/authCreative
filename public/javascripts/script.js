@@ -34,5 +34,28 @@ var app = angular.module('myApp', [])
             $scope.numRead = '';
             $scope.readDesire = '';
         };
+        
+        $scope.deleteBook = function(book) {
+            console.log("Book: " + book.book);
+            $http({
+                method: "PUT",
+                url: "/deleteBook",
+                data: {"book" : book.book}
+            })
+            .then(function(response) {
+                if (response.data == "success") {
+                    console.log("made it!!!");
+                    for (var i = 0; i < $scope.books.length; ++i) {
+                        console.log("$scope.books[i]" + $scope.books[i].book)
+                        console.log("book.book:" + book.book);
+                        if ($scope.books[i].book == book.book) {
+                            $scope.books.splice(i, 1);
+                            return;
+                        }
+                    }
+                }
+                console.log("made it to the response.");
+            })
+        }
     }
 ]);

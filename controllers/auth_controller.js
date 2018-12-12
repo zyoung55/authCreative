@@ -89,3 +89,25 @@ exports.getBooks = function(req, res) {
         }
     })
 };
+
+exports.deleteBook = function(req, res) {
+    console.log("book requested to be deleted!");
+    console.log(req.body.book);
+    User.findOne({username: req.session.username}).exec(function(err, user) {
+       if (user) {
+           for(var i = 0; i < user.books.length; i++) {
+               if (user.books[i].book == req.body.book) {
+                   user.updateOne({$pull: {'books': { book: req.body.book}} }, function(err) {
+                       if (err) {
+                           console.log("There was an error in the pull.");
+                       }
+                       else {
+                           res.send("success");
+                           console.log("The book pull worked!")
+                       }
+                   })
+               }
+           }
+       } 
+    })
+}

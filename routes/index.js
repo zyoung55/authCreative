@@ -36,5 +36,6 @@ router.post('/login', users.login);
 router.post('/addBook', users.addBook);
 router.post('/signup', users.signup);
 router.get('/getBooks', users.getBooks);
+router.put('/deleteBook', users.deleteBook);
 
 module.exports = router;

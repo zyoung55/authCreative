@@ -6,14 +6,16 @@
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl">
-    <h1>Read and Remember</h1>
-    <p>Welcome to your own personal book collection. We hope you enjoy keeping track of books
+    <h1>
+        Read and Remember
+        <div id="logoutButtonParent">
+            <form id="logoutForm" method="GET" action="/logout">
+                <button id="logoutButton">Logout</button>
+            </form>
+        </div>
+    </h1>
+    <p class="welcomeParagraph">Welcome to your own personal book collection. We hope you enjoy keeping track of books
     you have read</br> as well as adding new books you would like to read in the future!</p>
-    <div id="logoutButtonParent">
-        <form id="logoutForm" method="GET" action="/logout">
-            <button id="logoutButton">Logout</button>
-        </form>
-    </div>
     <h2 id="bookList">Book list:</h2>
     <p>The books below are ordered by desire to read so you can focus on reading
 the books you currently want to read the most.</p>
@@ -23,6 +25,7 @@ the books you currently want to read the most.</p>
             Book name: {{book.book}}</br></br>
             Number of times read: {{book.numRead}}</br></br>
             Current level of desire to read: {{book.readDesire}}</br></br>
+            <button ng-click="deleteBook(book)">Delete Book</button>
         </div>
     </div>
     <h2>Add a new book:</h2>

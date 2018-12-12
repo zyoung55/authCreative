@@ -130,3 +130,7 @@ li {
   margin-left: auto;
   margin-right: auto;
 }
+
+.welcomeParagraph {
+  font-size: 20px;
+}
